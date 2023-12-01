@@ -13,40 +13,19 @@ zoneight234
 7pqrstsixteen
 '''
 
-def replaceStringWithNumber(s: str, x: str) -> str:
-    if (x == "one"):
-        s = s.replace(x, "1")
+numbers = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 
-    if (x == "two"):
-        s = s.replace(x, "2")
+def replaceStringWithNumber(s: str, sNumber: str) -> str:
 
-    if (x == "three"):
-        s = s.replace(x, "3")
-
-    if (x == "four"):
-        s = s.replace(x, "4")
-
-    if (x == "five"):
-        s = s.replace(x, "5")
-
-    if (x == "six"):
-        s = s.replace(x, "6")
-
-    if (x == "seven"):
-        s = s.replace(x, "7")
-
-    if (x == "eight"):
-        s = s.replace(x, "8")
-
-    if (x == "nine"):
-        s = s.replace(x, "9")
+    for i, number in enumerate(numbers):
+        if(sNumber == number):
+            s = s.replace(sNumber, str(i+1))
 
     return s
 
-
 def replaceFirstAndLast(s: str) -> str:
 
-    r = re.findall("(?=(one|two|three|four|five|six|seven|eight|nine))", s); # overlapping / look ahead
+    r = re.findall("(?=(" + "|".join(numbers) + "))", s); # overlapping / look ahead
     
     if(len(r) > 0):
         return replaceStringWithNumber(s, r[0]) + replaceStringWithNumber(s, r[len(r)-1])
