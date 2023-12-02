@@ -10,7 +10,7 @@ a1b2c3d4e5f
 treb7uchet
 '''
 
-def parse_input(s: str) -> list[int]:
+def parse_input(s):
     return [re.sub(r'[^0-9]', '', x) for x in s.strip().split("\n")]
 
 def main() -> int:
